@@ -1,7 +1,7 @@
 import React ,{useState} from 'react'
 import styled from 'styled-components'
 import {Menu,VideoCall,Notifications,Mic,Search, Home,Timeline,Subscriptions} from '@material-ui/icons'
-import { IconButton ,Paper} from '@material-ui/core'
+import { IconButton ,Paper,TextField} from '@material-ui/core'
 import Logo from '../Logo.png'
 
 const Navbar = ({open,setopen}) => {
@@ -15,24 +15,33 @@ const Navbar = ({open,setopen}) => {
         alignItems: "center",
       }}
     >
-      
-        <First>
-          <IconButton>
-            <Menu
-              style={{ cursor: "pointer" }}
-              onClick={() => {
-                setopen(!open);
-              }}
-            />
-          </IconButton>
+      <First>
+        <IconButton>
+          <Menu
+            style={{ cursor: "pointer" }}
+            onClick={() => {
+              setopen(!open);
+            }}
+          />
+        </IconButton>
 
-          <img src={Logo} />
-        </First>
+        <img src={Logo} />
+      </First>
 
       <Middle>
-        <Paper style={{borderRadius:'40px', display:'flex',alignItems:'center'}}>
+        <Paper
+          style={{
+            borderRadius: "40px",
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
           <Search />
-          Hello You can now search me
+          <TextField
+            required
+            id="outlined-required"
+  placeholder="Search"
+          />
           <IconButton>
             <Search />
           </IconButton>
@@ -43,9 +52,13 @@ const Navbar = ({open,setopen}) => {
         </IconButton>
       </Middle>
       <Last>
-        <VideoCall />
+      <IconButton>
 
+        <VideoCall />
+      </IconButton>
+<IconButton>
         <Notifications />
+      </IconButton>
 
         {/* <Account /> */}
       </Last>

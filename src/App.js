@@ -5,7 +5,7 @@ import { BrowserRouter as Router ,Route,Routes } from 'react-router-dom'
 import {Feed,Video,Navbar,Sidebar} from './Youtube/transport'
 
 const App = () => {
-  let [open,setopen]=useState(0);
+  let [open,setopen]=useState(false);
   return (
     <div>
 
@@ -17,9 +17,12 @@ const App = () => {
 
          <Route path='/' exact element={<Feed open={open}/>}/>
 
-<Route path='/video/:id' exact element={<Video/>}/>
+    <Route path='/video/:id' exact element={<Video/>}/>
+
   </Routes>
+
 </Router>
+
 
     </div>
   )
