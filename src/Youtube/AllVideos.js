@@ -26,7 +26,7 @@ let [videos,setvideos]=useState([]);
       )
         .then((response) => response.json())
         .then((response) => {
-          setvideos(response.items);
+          {setvideos(response.items); console.log(response)}
         })
         .catch((err) => console.error(err));
 

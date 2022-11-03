@@ -5,13 +5,13 @@ import { Box } from '@material-ui/core';
 
 const Feed = ({open}) => {
 
-let [category,setcategory]=useState('Clever Programmer');
+let [category,setcategory]=useState('Tech World With Nana');
 
   return (
     <Box sx={{display:'flex'}}>
       <Sidebar open={open} />
 
-<Box p={2} sx={{overflowY:'auto',height:'90vh',flex:2}}>
+<Box p={2} style={{overflowY:'auto',height:'90vh',flex:2,width:'100vw'}}>
 
 {/* <SlideBar/> */}
 
