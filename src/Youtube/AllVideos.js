@@ -34,7 +34,7 @@ let [videos,setvideos]=useState([]);
 
     return (
 
-<Stack direction='row' flexWrap='wrap' justifyContent='start' gap={2} >
+<Stack direction='row' flexWrap='wrap' justifyContent='start' gap={4} >
 
 { 
     videos?.map((item,idx)=>(
@@ -43,6 +43,7 @@ let [videos,setvideos]=useState([]);
   item.id.videoId && <VideoCard  key={idx} video= {item}  />}
 
   { item.id.channelId&& <ChannelCard key={idx} channel={item}/> }
+  
 </Box>
 
 ))   

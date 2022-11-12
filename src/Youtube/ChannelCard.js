@@ -10,7 +10,7 @@ console.log(channel)
 let {snippet}=channel
     return (
       <Box 
-      
+      style={{width:'200px',height:'320px' ,display:'flex',justifyContent:'center',alignItems:'center'}}
       >
         <Link
           to={`/channel/${snippet.channelId}`}
