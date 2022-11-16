@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import Sidebar from './Sidebar'
-import AllVideos from './AllVideos'
+import CallVideos from './CallVideos'
 import { Box } from '@material-ui/core';
 
 const Feed = ({open}) => {
@@ -15,7 +15,7 @@ let [category,setcategory]=useState('Tech World With Nana');
 
 {/* <SlideBar/> */}
 
-<AllVideos category={category}/ >
+<CallVideos category={category}/ >
 
 </Box>
     </Box>
