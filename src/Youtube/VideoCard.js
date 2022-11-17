@@ -1,4 +1,5 @@
-import { Card, CardContent,CardMedia,Typography} from '@material-ui/core';
+import { Typography} from '@material-ui/core';
+import {Card,CardContent,CardMedia} from '@mui/material'
 import React from 'react'
 import { Link } from 'react-router-dom';
 
@@ -6,18 +7,17 @@ const VideoCard = ({video:{id:{videoId},snippet}}) => {
 
 
     return (
-      <Card style={{width:200 }}>
+      <Card sx={{width:{xs:'300px', sm:'250px',md:'200px'}}}>
         <Link to={videoId ? `/video/${videoId}` : "Uxpzyj"}>
           <CardMedia
             image={snippet?.thumbnails?.high?.url}
             alt={snippet?.title}
-     style={{ height: 150, width: 200 }}
+    //  358,180
+     sx={{height:150,width:{xs:'300px',sm:'250px', md:'200px' ,}}}
           />
         </Link>
 
-
-
-            <CardContent style={{height:'106px'}}>
+            <CardContent sx={{height:'106px'}}>
 
           <Link to={videoId ? `/video/${videoId}` : "Uxpzyj"} style={{textDecoration:'none',color:'black'}}>
 <Typography variant='subtitle1' fontWeight='bold' color='black'>

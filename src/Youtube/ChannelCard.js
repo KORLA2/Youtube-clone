@@ -37,7 +37,7 @@ let channelId=snippet?snippet.channelId?snippet.channelId:channel.id:'';
             />
 
             <Typography variant="body1"  style={{marginTop:'20px'}}>{snippet?snippet.channelTitle?snippet.channelTitle:snippet.title:''}</Typography>
-            <Typography variant="body2"  style={{marginTop:'20px'}}>{channel?channel.statistics?channel.statistics.subscriberCount:'':''}   subscribers</Typography>
+            <Typography variant="body2"  style={{marginTop:'20px'}}>{channel?channel.statistics?channel.statistics.subscriberCount +'  subscribers':'':''} </Typography>
        
          </CardContent>
         </Link>

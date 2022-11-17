@@ -34,7 +34,7 @@ useEffect(() => {
     
     <div>
       
-<AllVideos videos={videos}/>
+<AllVideos videos={videos} />
     </div>
 
   )

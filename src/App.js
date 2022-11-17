@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import { BrowserRouter as Router ,Route,Routes } from 'react-router-dom'
 
-import {Feed,Video,Navbar,Sidebar,Channel} from './Youtube/transport'
+import {Feed,Video,Navbar,SearchFeed,Channel} from './Youtube/transport'
 
 const App = () => {
 
@@ -10,26 +10,20 @@ const App = () => {
 
   return (
     <div>
+      <Router>
+        <Navbar open={open} setopen={setopen} />
 
-<Router>
+        <Routes>
+          <Route path="/" exact element={<Feed open={open} />} />
 
-   <Navbar open={open}  setopen={setopen}/>
+          <Route path="/video/:id" exact element={<Video />} />
 
-  <Routes>
-
-         <Route path='/' exact element={<Feed open={open}/>}/>
-
-    <Route path='/video/:id' exact element={<Video/>}/>
-
-    <Route path='/channel/:id' exact element={<Channel/>}/>
-
-  </Routes>
-
-</Router>
-
-
+          <Route path="/channel/:id" exact element={<Channel />} />
+          <Route path="/search/:Term" exact element={<SearchFeed />} />
+        </Routes>
+      </Router>
     </div>
-  )
+  );
 }
 
 export default App

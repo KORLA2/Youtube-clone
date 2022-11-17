@@ -1,19 +1,32 @@
 import React ,{useState} from 'react'
 import styled from 'styled-components'
 import {Menu,VideoCall,Notifications,Mic,Search, Home,Timeline,Subscriptions} from '@material-ui/icons'
-import { IconButton ,Paper,TextField} from '@material-ui/core'
+import {  Input} from '@material-ui/core'
 import Logo from '../Logo.png'
-
+import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import {Stack,Paper,IconButton} from '@mui/material'
 const Navbar = ({open,setopen}) => {
 
+let [searchTerm,setSearchTerm]=useState('');
+let navigate=useNavigate();
+
+let handleSubmit=(e)=>{
+  console.log('e')
+e.preventDefault();
+
+navigate(`/search/${searchTerm}`)
+
+setSearchTerm('');
+
+}
+
   return (
-    <div
-      style={{
-        display: "flex",
-        padding: "5px",
-        justifyContent: "space-between",
-        alignItems: "center",
-      }}
+    <Stack
+    direction='row'
+    alignItems='center'
+    p={2}
+       sx={{position:'sticky',background:'white',top:0,justifyContent:'space-between'}}
     >
       <First>
         <IconButton>
@@ -24,25 +37,41 @@ const Navbar = ({open,setopen}) => {
             }}
           />
         </IconButton>
+<Link to='/' style={{display:'flex',alignItems:'center'}}>
 
-        <img src={Logo} />
+ <img src={Logo} />
+</Link>
       </First>
 
       <Middle>
         <Paper
-          style={{
-            borderRadius: "40px",
-            display: "flex",
-            alignItems: "center",
-          }}
+
+        component='form'
+        onSubmit={handleSubmit}
+
+        sx={{
+
+borderRadius:'20',
+display:'flex',
+justifyContent:'space-between',
+alignItems:'center',
+border:'1px solid black',
+pl:2,
+mr:{sm:5}
+        }}
+ 
         >
           <Search />
-          <TextField
-            required
-            id="outlined-required"
-  placeholder="Search"
-          />
-          <IconButton>
+  <Input
+
+placeholder='Search...'
+value={searchTerm}
+onChange={(e)=>{
+setSearchTerm(e.target.value)
+
+}}
+  />
+          <IconButton type='submit' sx={{p:'10px',color:''}}>
             <Search />
           </IconButton>
         </Paper>
@@ -62,7 +91,7 @@ const Navbar = ({open,setopen}) => {
 
         {/* <Account /> */}
       </Last>
-    </div>
+    </Stack>
   );
 }
 

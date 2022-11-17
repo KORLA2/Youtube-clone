@@ -8,7 +8,7 @@ console.log(videos)
 
     return (
 
-<Stack direction='row' flexWrap='wrap' justifyContent='start' gap={4} >
+<Stack direction='row'  py={1} px={2} flexWrap='wrap' sx={{justifyContent:{md:"center"}}} justifyContent='start' gap={4} >
 
 { 
     videos?.map((item,idx)=>(

@@ -42,17 +42,18 @@ fetch(
   return (
     <Box >
       <Box >
-        <div style={{ display: "flex", justifyContent: "center" ,background:'red',height:'150px'}}></div>
+        <div style={{ display: "flex", justifyContent: "center" ,background:'red',width:'100%',height:'150px'}}></div>
 <div style={{display:'flex',justifyContent:'center'}}>
 
         <ChannelCard channel={channel} marginTop='-110px' />
 </div>
       </Box>
-<Box display='flex' p='2' >
+<Box display='flex' p='2' justifyContent='center'>
 
-<Box sx={{ml:'100px'}}/>
+<Box sx={{m:{sm:'100px'}}}/>
 
-<AllVideos videos={videos}/>
+ <AllVideos videos={videos}/>
+
 </Box>
   </Box>
   );
