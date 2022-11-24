@@ -20,7 +20,7 @@ const options = {
 };
 
 fetch(
-  `https://youtube-v31.p.rapidapi.com/search?q=${Term}&part=snippet%2Cid&regionCode=US&maxResults=500&order=date`,
+  `https://youtube-v31.p.rapidapi.com/search?q=${Term}&part=snippet%2Cid&regionCode=IN&maxResults=500&order=date`,
   options
 )
   .then((response) => response.json())

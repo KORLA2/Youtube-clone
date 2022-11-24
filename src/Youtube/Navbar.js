@@ -6,7 +6,8 @@ import Logo from '../Logo.png'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import {Stack,Paper,IconButton} from '@mui/material'
-const Navbar = ({open,setopen}) => {
+import SideBar from './SideBar'
+const Navbar = () => {
 
 let [searchTerm,setSearchTerm]=useState('');
 let navigate=useNavigate();
@@ -22,6 +23,7 @@ setSearchTerm('');
 }
 
   return (
+
     <Stack
     direction='row'
     alignItems='center'
@@ -30,12 +32,7 @@ setSearchTerm('');
     >
       <First>
         <IconButton>
-          <Menu
-            style={{ cursor: "pointer" }}
-            onClick={() => {
-              setopen(!open);
-            }}
-          />
+         <SideBar/>
         </IconButton>
 <Link to='/' style={{display:'flex',alignItems:'center'}}>
 

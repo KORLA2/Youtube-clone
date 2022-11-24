@@ -12,10 +12,12 @@ let [category,setcategory]=useState('Tech World With Nana');
       <Sidebar open={open} />
 
       <Box
-        p={4}
-        style={{  height: "90vh", flex: 5, width: "100vw" ,display:'flex',justifyContent:'center' }}
+        p={1}
+        style={{   width: "100vw" ,display:'flex',justifyContent:'center' }}
       >
+
         {/* <SlideBar/> */}
+
         <Box sx={{ ml: "150px"  }} />
         <CallVideos category={category} />
       </Box>

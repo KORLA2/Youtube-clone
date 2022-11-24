@@ -1,57 +1,84 @@
-import React from 'react'
-import {Paper,Typography,IconButton} from '@material-ui/core'
-import {Home,Timeline,Subscriptions,VideoLibrary, History,ThumbUpSharp,VideoLabel,WatchLater} from '@material-ui/icons'
-import styled  from 'styled-components'
-const Sidebar = ({open}) => {
-console.log(open)
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import Drawer from '@mui/material/Drawer';
+import Button from '@mui/material/Button';
+import List from '@mui/material/List';
+import Divider from '@mui/material/Divider';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import InboxIcon from '@mui/icons-material/MoveToInbox';
+import MailIcon from '@mui/icons-material/Mail';
+import { Menu } from '@mui/icons-material';
+export default function SideBar() {
+  const [state, setState] = React.useState({
+    top: false,
+    left: false,
+    bottom: false,
+    right: false,
+  });
+
+  const toggleDrawer = (anchor, open) => (event) => {
+    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+
+    setState({ ...state, [anchor]: open });
+  };
+
+  const list = (anchor) => (
+    <Box
+      sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
+      role="presentation"
+      onClick={toggleDrawer(anchor, false)}
+      onKeyDown={toggleDrawer(anchor, false)}
+    >
+      <List>
+        {['Home', 'Shorts', 'Subscriptions'].map((text, index) => (
+          <ListItem key={text} disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+      <Divider />
+      <List>
+        {['Library','History','Your videos','Watch Later','Liked videos'].map((text, index) => (
+          <ListItem key={text} disablePadding>
+            <ListItemButton>
+              
+              <ListItemIcon>
+                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+
+      
+    </Box>
+  );
+
   return (
-    <Paper style={{width:'250px' , transition:'1s',marginLeft: open===false?'-260px':'5px'}}>
-      <Icon>
-        <Home />
-        <Typography variant="body2">Home</Typography>
-      </Icon>
-      <Icon>
-        <Timeline />
-        <Typography variant="body2">Shorts</Typography>
-      </Icon>
-      <Icon>
-        <Subscriptions />
-        <Typography variant="body2">Subscriptions</Typography>
-      </Icon>
-      <Icon>
-        <VideoLibrary />
-        <Typography variant="body2">Library</Typography>
-      </Icon>
-      <Icon>
-        <History />
-        <Typography variant="body2">History</Typography>
-      </Icon>
-      <Icon>
-        <VideoLabel />
-        <Typography variant="body2">Your Videos</Typography>
-      </Icon>
-      <Icon>
-        <WatchLater />
-        <Typography variant="body2">Watch later</Typography>
-      </Icon>
-           <Icon>
-        <ThumbUpSharp />
-        <Typography variant="body2">Liked Videos</Typography>
-      </Icon>
-    </Paper>
+    <div>
+        <div>
+          <Menu onClick={toggleDrawer('left', true)} />
+          <Drawer
+            anchor='left'
+            open={state['left']}
+            onClose={toggleDrawer('left', false)}
+          >
+            {list('left')}
+          </Drawer>
+        </div>
+
+    </div>
   );
 }
-
-export default Sidebar
-
-let Icon=styled.div`
-display:flex;
-justify-content: space-around;
-padding:10px;
-margin:10px;
-&:hover{
-cursor:pointer;
-    background:rgba(0,0,0,0.08);
-    border-radius:4px;
-}
-`
